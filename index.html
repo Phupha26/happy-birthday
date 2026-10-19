@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&family=Pattaya&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="hearts" aria-hidden="true"></div>
+
+<!-- ซองจดหมาย (หน้าแรก) -->
+<section id="envelope-screen">
+  <p class="env-hint">มีจดหมายมาถึงเธอ</p>
+  <button id="envelope" aria-label="เปิดซองจดหมาย">
+    <span class="env-back"></span>
+    <span class="env-paper">เปิดดูสิ 💌</span>
+    <span class="env-front"></span>
+    <span class="env-flap"><span class="seal">♥</span></span>
+  </button>
+  <p class="env-tap">แตะที่ซองเพื่อเปิด</p>
+</section>
+
+<main id="site" class="hidden">
+
+  <!-- 1. HERO -->
+  <header class="hero">
+    <div class="arch">
+      <!-- ใส่รูปหลัก: images/her.jpg -->
+      <img src="icee.jpg" alt="รูปของเธอ" data-photo>
+      <span class="ph">🌸<br>ใส่รูปเธอที่นี่<br><small>images/her.jpg</small></span>
+    </div>
+    <h1 class="title">Happy Birthday</h1>
+    <p class="name" id="herName">My love</p>
+    <p class="sub" id="heroSub"></p>
+    <a href="#cake" class="scroll">เลื่อนลงมาสิ ↓</a>
+  </header>
+
+  <!-- 2. เค้ก -->
+  <section id="cake" class="block">
+    <h2>ขอพรก่อนนะ</h2>
+    <p class="lead">หลับตา อธิษฐาน แล้วแตะที่เทียนเลย</p>
+    <button id="cakeBtn" class="cake" aria-label="เป่าเทียน">
+      <svg viewBox="0 0 240 250" role="img" aria-label="เค้กวันเกิด">
+        <ellipse cx="120" cy="226" rx="105" ry="14" fill="#f3b6c8"/>
+        <rect x="30" y="150" width="180" height="72" rx="14" fill="#ffd3df"/>
+        <rect x="30" y="150" width="180" height="72" rx="14" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+        <path d="M30 168 q15 18 30 0 q15 18 30 0 q15 18 30 0 q15 18 30 0 q15 18 30 0 q15 18 30 0 v-18 h-180z" fill="#fff"/>
+        <rect x="62" y="96" width="116" height="58" rx="12" fill="#ff9db9"/>
+        <path d="M62 112 q14 16 29 0 q14 16 29 0 q14 16 29 0 q14 16 29 0 v-16 h-116z" fill="#fff"/>
+        <g fill="#ff5c8a"><circle cx="50" cy="196" r="5"/><circle cx="90" cy="204" r="5"/><circle cx="150" cy="204" r="5"/><circle cx="190" cy="196" r="5"/></g>
+        <g class="candles">
+          <rect x="82" y="64" width="9" height="34" rx="3" fill="#fff"/><rect x="82" y="72" width="9" height="5" fill="#ff9db9"/>
+          <rect x="116" y="58" width="9" height="40" rx="3" fill="#fff"/><rect x="116" y="68" width="9" height="5" fill="#ff9db9"/>
+          <rect x="150" y="64" width="9" height="34" rx="3" fill="#fff"/><rect x="150" y="72" width="9" height="5" fill="#ff9db9"/>
+          <path class="flame" d="M86.5 42 q-8 10 0 18 q8 -8 0 -18z" fill="#ffc94d"/>
+          <path class="flame f2" d="M120.5 36 q-8 10 0 18 q8 -8 0 -18z" fill="#ffc94d"/>
+          <path class="flame f3" d="M154.5 42 q-8 10 0 18 q8 -8 0 -18z" fill="#ffc94d"/>
+        </g>
+      </svg>
+    </button>
+    <p id="cakeMsg" class="cake-msg"></p>
+  </section>
+
+  <!-- 3. จดหมาย -->
+  <section id="letter" class="block">
+    <h2>ข้อความจากภูผา</h2>
+    <article class="paper">
+      <p id="typed" aria-live="polite"></p>
+      <p class="sign" id="sign"></p>
+    </article>
+  </section>
+
+  <!-- 4. กล่องของขวัญ (รูป 3 ใบ) -->
+  <section id="gifts" class="block">
+    <h2>ของขวัญจากฉัน</h2>
+    <p class="lead">แตะกล่องเพื่อเปิดดูนะ</p>
+    <div class="gifts" id="giftBox"></div>
+  </section>
+
+  <!-- 5. คูปองพิเศษ -->
+  <section id="coupons" class="block">
+    <h2>คูปองพิเศษ</h2>
+    <p class="lead">แตะเพื่อใช้สิทธิ์ได้เลย ไม่มีวันหมดอายุ</p>
+    <div class="coupons" id="couponBox"></div>
+  </section>
+
+  <!-- 6. ท้ายเว็บ -->
+  <section id="finale" class="block final">
+    <button id="loveBtn" class="love" aria-label="กดตรงนี้">♥</button>
+    <p class="lead" id="loveHint">กดหัวใจดวงนี้อีกครั้งนะ</p>
+    <p id="loveMsg" class="love-msg"></p>
+  </section>
+
+  <footer>ทำด้วยความรัก 🤍</footer>
+</main>
+
+<button id="music" class="music hidden" aria-label="เปิด/ปิดเพลง">♫</button>
+<audio id="bgm" loop src="music/song.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
